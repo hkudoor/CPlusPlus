@@ -5,7 +5,6 @@
 using namespace std;
 
 // Task Class Definition
-
 Task::Task(string name, uint8_t priority) {
     mTaskName = name;
     mPriority = priority;
@@ -25,4 +24,34 @@ void Task::runTask() {
 void Task::registerTask() {
     Scheduler& scheduler = Scheduler::getScheduler();
     mTaskId = scheduler.registerTask(this);
+}
+
+// TaskOne Class Definition
+TaskOne::TaskOne(string name, uint8_t priority):
+         Task(name, priority) {
+    cout<<"Creating object of type TaskOne\n";
+}
+
+void TaskOne::runTask() {
+    cout<<"Running Task --- ONE ---\n";
+}
+
+// TaskTwo Class Definition
+TaskTwo::TaskTwo(string name, uint8_t priority):
+         Task(name, priority) {
+    cout<<"Creating object of type TaskTwo\n";
+}
+
+void TaskTwo::runTask() {
+    cout<<"Running Task --- TWO ---\n";
+}
+
+// TaskThree Class Definition
+TaskThree::TaskThree(string name, uint8_t priority):
+           Task(name, priority) {
+    cout<<"Creating object of type TaskThree\n";
+}
+
+void TaskThree::runTask() {
+    cout<<"Running Task --- THREE ---\n";
 }

@@ -7,12 +7,14 @@ using namespace std;
 #define MAX_NUM_TASKS 20
 
 class Scheduler{
-	Scheduler() {
+	Task* mTaskList[MAX_NUM_TASKS] = {NULL};
+	uint8_t mTaskRegistrationIndex;
+    Scheduler() {
 	    mTaskRegistrationIndex = 0;
 	    cout<<"Creating the Scheduler"<<endl;
 	}
-	Task* mTaskList[MAX_NUM_TASKS] = {NULL};
-	uint8_t mTaskRegistrationIndex;
+    uint8_t getHighestPriorityTaskIndex();
+    void promoteAllTasksExcept(uint8_t thisTaskIndex);
 public:
     ~Scheduler() {
 	    cout<<"Destroying the Scheduler"<<endl;
@@ -24,6 +26,7 @@ public:
 	Scheduler(Scheduler const&) = delete;
 	void operator=(Scheduler const&) = delete;
 	uint8_t registerTask(Task* task);
+    void runScheduler();
 };
 
 #endif // _SCHEDULER_HPP_
