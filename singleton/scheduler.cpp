@@ -21,16 +21,13 @@ uint8_t Scheduler::getHighestPriorityTaskIndex() {
 
 void Scheduler::promoteAllTasksExcept(uint8_t thisTaskIndex) {
     uint8_t index=0, tempPriority;
-    cout<<"Priorities : ";
     for(index=0; index<mTaskRegistrationIndex; index++) {
-        if(index == thisTaskIndex) { 
-            cout<<(int)tempPriority<<" : ";
+        if(index == thisTaskIndex && (mTaskList[index]->getPriority() != MAX_PRIORITY)) { 
             continue;
         }
         tempPriority = mTaskList[index]->getPriority();
         tempPriority++;
         mTaskList[index]->setPriority(tempPriority);
-        cout<<(int)tempPriority<<" : ";
     }
     cout<<endl;
 }
